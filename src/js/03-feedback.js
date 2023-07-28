@@ -16,8 +16,6 @@ function onInputChange(evt) {
 
   const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-  userData = { ...storedData, [formName]: formValue };
-
   localStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
 }
 
@@ -42,6 +40,7 @@ function onSubmit(evt) {
 function fillFormFields() {
   const storedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
   if (storedData) {
+     userData = { ...storedData, [formName]: formValue };
     form.elements.email.value = storedData.email || '';
     form.elements.message.value = storedData.message || '';
   }
